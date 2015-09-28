@@ -1,6 +1,6 @@
 var groceryApp = angular.module('groceryApp', []);
 groceryApp.controller('groceryListController', ['$scope', '$http', function($scope, $http) {
-	console.log("Controller works");
+	console.log("Controller is working");
 
 	var refresh = function(){
 		$http.get('/grocerylist').success(function (response){
@@ -11,7 +11,6 @@ groceryApp.controller('groceryListController', ['$scope', '$http', function($sco
 	refresh();
 
 	$scope.addItem = function (){
-		console.log('addItem()');
 		$http.post('/grocerylist',$scope.item).success(function (response){
 			console.log(response);
 			$scope.item = '';
@@ -20,7 +19,6 @@ groceryApp.controller('groceryListController', ['$scope', '$http', function($sco
 	};
 
 	$scope.removeItem = function(id){
-		console.log(id);
 		$http.delete('/grocerylist/' + id).success(function(response){
 			refresh();
 		});

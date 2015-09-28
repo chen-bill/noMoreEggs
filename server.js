@@ -11,13 +11,11 @@ app.use(bodyParser.json());
 
 app.get('/grocerylist', function (req, res) {
   db.grocerylist.find(function (err, docs){
-  	console.log(docs);
   	res.json(docs); //get requst
   });
 });
 
 app.post('/grocerylist', function (req, res) {
-	console.log(req.body);
 	db.grocerylist.insert(req.body, function (err, docs){
 		res.json(docs);
 	});
@@ -31,4 +29,4 @@ app.delete('/grocerylist/:id', function (req, res) {
 });
 
 app.listen(3000);
-console.log("listening on port 3000");
+console.log("Ready to do stuff on port 3000");
