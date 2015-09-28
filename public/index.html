@@ -1,0 +1,38 @@
+<!DOCTYPE>
+<html ng-app="groceryApp">
+<head>
+	<link rel="stylesheet" type="text/css" href="css/grocerylist.css">
+	<link href='https://fonts.googleapis.com/css?family=Lato|Indie+Flower' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<div class="container" ng-controller="groceryListController" id="listContainer">
+		<h1>Groceries List</h1>
+
+		<table>
+				<tr>
+					<th>Cart</th>
+					<th>Quantity</th>         
+					<th>Item</th>
+				</tr>
+				<tr ng-repeat="item in groceryList" id="listItem">
+					<td><input type="checkbox"></input></td>
+					<td class="quantity">{{item.quantity}}</td>
+					<td class="name">{{item.name}}</td>
+					<td><button ng-click="removeItem(item._id)">Delete</button></td>
+				</tr>
+				<tr id="listInput">
+					<td></td>
+					<td><input type="text" ng-model="item.quantity" required></td>
+					<td><input type="text" ng-model="item.name" required></td>
+					<td><button ng-click="addItem()" ng-disabled="!(!!item.name && !!item.quantity)">Add</button></td>
+				</tr>
+			<tbody>
+
+		</table>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
+	<script src="controllers/groceryListController.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="js/custom.js"></script>
+</body>
+</html>
